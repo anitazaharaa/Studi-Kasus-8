@@ -1,0 +1,138 @@
+#include <iostream>
+
+using namespace std;
+
+class Stukas {
+
+private:
+  string nama, nim, cari, jenis, karyawan;
+  string hasilJenisKaryawan, hasilNama, hasilAlamat, hasilJenisKelamin;
+  string developer[3][3], admin[3][3], gudang[3][3], sekretaris[3][3];
+  int hasil;
+
+public:
+  void input();
+  void output();
+
+  void deklarasiKaryawan();
+  void cariKaryawan();
+};
+
+void Stukas::deklarasiKaryawan() {
+  // Jenis Karyawan
+  developer[0][0] = "Milrded Sloan";
+  developer[0][1] = "Cem Mckenzie";
+  developer[0][2] = "Billie-Jo Redman";
+
+  developer[1][0] = "Slapool";
+  developer[1][1] = "ikluoham";
+  developer[1][2] = "yhagini";
+
+  developer[2][0] = "Pria";
+  developer[2][1] = "Pria";
+  developer[2][2] = "Wanita";
+
+  admin[0][0] = "kyron cortez";
+  admin[0][1] = "Piers Mcgill";
+
+  admin[1][0] = "suvale";
+  admin[1][1] = "Slapool";
+
+  admin[2][0] = "wanita";
+  admin[2][1] = "wanita";
+
+  gudang[0][0] = "Bodhi Hopper";
+  gudang[0][1] = "Lylah salt";
+  gudang[0][2] = "Briony Klein";
+
+  gudang[1][0] = "Yhagini";
+  gudang[1][1] = "Fason";
+  gudang[1][2] = "Manta";
+
+  gudang[2][0] = "Pria";
+  gudang[2][1] = "Pria";
+  gudang[2][2] = "Wanita";
+
+  sekretaris[0][0] = "Lindsay Bautista";
+  sekretaris[0][1] = "Nawal Wharton";
+
+  sekretaris[1][0] = "Urghbert";
+  sekretaris[1][1] = "Akacester";
+
+  sekretaris[2][0] = "Wanita";
+  sekretaris[2][1] = "Wanita";
+}
+
+void Stukas::cariKaryawan() {
+  for (int i = 0; i < 3; i++) {
+    if (cari == developer[0][i]) {
+      hasilJenisKaryawan = "developer";
+      hasilNama = developer[0][i];
+      hasilJenisKelamin = developer[1][i];
+    } else if (cari == admin[0][i]) {
+      hasilJenisKaryawan = "admin";
+      hasilNama = admin[0][i];
+      hasilJenisKelamin = admin[1][i];
+    } else if (cari == gudang[0][i]) {
+      hasilJenisKaryawan = "gudang";
+      hasilNama = gudang[0][i];
+      hasilJenisKelamin = gudang[1][i];
+    }
+  }
+}
+
+void Stukas::input() {
+  cout
+      << "===========================SELAMAT DATANG=========================\n";
+  cout
+      << "========================DI PT MAKMUR JAYA=======================\n";
+  cout << "||  JENIS KARYAWAN  ||        NAMA        ||  ALAMAT         ||\n";
+
+  for (int i = 0; i < 3; i++) {
+    cout << "||    DEVELOPER     ||" << developer[0][i] << "            || "
+         << developer[1][i] << "||" << developer[2][i]<< "||" << endl;
+  }
+
+  for (int i = 0; i < 3; i++) {
+    cout << "||      ADMIN     ||" << admin[0][i] << "            || "
+         << admin[1][i] << "||" << admin[2][i] <<"||" << endl;
+  }
+
+  for (int i = 0; i < 3; i++) {
+    cout << "||  GUDANG  ||" << gudang[0][i] << "       || " << gudang[1][i]
+         << "||" << gudang[0][i] << "||" << endl;
+  }
+
+  for (int i = 0; i < 3; i++) {
+    cout << "||  Sekretaris  ||" << sekretaris[0][i] << "       || "
+         << sekretaris[1][i] << "||" << sekretaris[2][i] << "||" << endl;
+  }
+  cout << "=========================================\n";
+  cout << "Masukan Nama karyawan : ";
+  getline(cin, hasilNama);
+  cout << "Masukan Jenis karyawan : ";
+  getline(cin, hasilJenisKaryawan);
+  cout << "Masukkan Alamat : ";
+  getline(cin, hasilAlamat);
+  cout << "Masukkan Jenis Kelamin :";
+  getline(cin, hasilJenisKelamin);
+  cout << "===========================================\n";
+  cout << "Masukan jenis karyawan yang ingin dicari : ";
+  getline(cin, cari);
+}
+
+void Stukas::output() {
+  cout << "\n=================HASIL PENCARIAN=================";
+  cout << "\nJenis Karyawan    : " << hasilJenisKaryawan;
+  cout << "\nNama   : " << hasilNama;
+  cout << "\nAlamat       : " << hasilAlamat;
+  cout << "\nJenis Kelamin : " << hasilJenisKelamin;
+  cout << "\n===================================================\n";
+}
+int main() {
+  Stukas n;
+  n.deklarasiKaryawan();
+  n.input();
+  n.cariKaryawan();
+  n.output();
+}
